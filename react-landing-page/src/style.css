@@ -12,6 +12,11 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+ /* brand colors */
+  --primary-color: red;
+  --secondary-color: yellow;
+  font-size: 14px;
+
 }
 
 a {
@@ -24,21 +29,21 @@ a:hover {
 
 }
 body{
-  background-color: red;
+  background-color: var(--primary-color);
   width: 100%;
   min-height: 100vh;
   margin: 0;
 }
 
 @media (min-width:375px){
-  body{
-    background-color: green;
-  }
+
 }
 
 @media (min-width: 1024px){
-  body{
-    background-color: violet;
+  :root {
+    font-size: 16px;
   }
+
+
   
 }
