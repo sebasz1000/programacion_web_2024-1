@@ -28,7 +28,7 @@ npm i -D standard
 3. Within package.json file add this configuration lines:
 
 ```
-“eslintConfig": {
+"eslintConfig": {
   "extends": "./node_modules/standard/eslintrc.json", 
 }
 ``` 
