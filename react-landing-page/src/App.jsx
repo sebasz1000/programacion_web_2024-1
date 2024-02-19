@@ -1,16 +1,13 @@
 import React from "react"
 import {Header} from "./components/Header/Header.jsx"
+import { Body } from "./components/Body/Body.jsx"
+import { Footer } from "./components/Footer/Footer.jsx"
 export default function App(){
     return(
         <>
         <Header />
-        <main>
-            <h1>Hello!</h1>
-        </main>
-        <footer>
-
-        </footer>
-
+        <Body />
+        <Footer />
         </>
     )
 }
