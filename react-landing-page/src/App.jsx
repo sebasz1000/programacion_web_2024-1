@@ -1,13 +1,11 @@
-import React from "react"
-import {Header} from "./components/Header/Header.jsx"
-import { Body } from "./components/Body/Body.jsx"
-import { Footer } from "./components/Footer/Footer.jsx"
-export default function App(){
-    return(
-        <>
-        <Header />
-        <Body />
-        <Footer />
-        </>
-    )
+import React from 'react'
+import { Body, Header, Footer } from './components'
+export default function App () {
+  return (
+    <>
+      <Header />
+      <Body />
+      <Footer />
+    </>
+  )
 }
