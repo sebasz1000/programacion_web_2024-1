@@ -1,0 +1,40 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.container{
+  display: block;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+form{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+
+input[type="text"]{
+  padding: 0.8em;
+  background-color: white;
+  border-radius: 1em;
+  color: black;
+  font-size: 1.1rem;
+}
+
+button[type="submit"]{
+  background-color: rgb(103, 165, 9);
+  font-weight: bold;
+  color: rgb(187, 245, 187);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
