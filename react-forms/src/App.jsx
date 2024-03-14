@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 
 function Form({ onSubmit }){
@@ -17,6 +17,7 @@ function Form({ onSubmit }){
   const handleSubmit = (e) => {
     e.preventDefault()
     onSubmit(formState)
+      setFormState("")
   }
   
   return(
@@ -31,18 +32,20 @@ function Form({ onSubmit }){
   )
 }
 
-const initTasks = [
-  {
-    id: crypto.randomUUID(),
-    title: "Tarea 1",
-    completed: false
-  }
-]
+const initTasks = JSON.parse(window.localStorage.getItem("tasks")) ?? [] 
 
 function App() {
   
   const [tasks, setTasks] = useState(initTasks)
   
+  useEffect( () => {
+    window.localStorage.setItem("tasks", JSON.stringify(tasks))
+  } , [tasks])
+
+  useEffect(() => {
+    window.localStorage.setItem("tasks", JSON.stringify(tasks))
+  }, [tasks])
+
   // Create task
   const createTask = (taskTitle) => {
     const newTask = {
@@ -59,6 +62,10 @@ function App() {
   const deleteTask = (TaskId) => {
     // .filter()
   }
+
+  const completeTask = (/* id, completed */) => {
+    // map()
+  }
   
   
   return (
@@ -69,7 +76,12 @@ function App() {
       <Form onSubmit={createTask}/>
         <ul>
           {
-            tasks.map( ({ id, title }) => <li key={id}>{title}<button>DELETE</button></li> )
+            tasks ?? tasks.map( ({ id, title }) => (<li key={id}>
+                <input type="checkbox"  />
+                  {title}
+                <button>DELETE</button>
+              </li>) 
+              )
           }
         </ul>
     </div>
