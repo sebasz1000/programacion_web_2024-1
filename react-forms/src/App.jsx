@@ -63,29 +63,36 @@ function App() {
     // .filter()
   }
 
-  const completeTask = (/* id, completed */) => {
+  const completeTask = (/* id, completed(checkbox e.target.checked ) */) => {
     // map()
   }
   
   
   return (
     <>
-    <p>Este es el valor del Input</p>
-    <div className="container">
-      <h1>React Forms</h1>
-      <Form onSubmit={createTask}/>
-        <ul>
-          {
-            tasks ?? tasks.map( ({ id, title }) => (<li key={id}>
-                <input type="checkbox"  />
-                  {title}
-                <button>DELETE</button>
-              </li>) 
-              )
-          }
-        </ul>
-    </div>
-      
+      <p>Este es el valor del Input</p>
+      <div className="container">
+        <h1>React Forms</h1>
+        <Form onSubmit={createTask} />
+          <ul id="tasks-list">
+            {
+              /* NOTE: We should give a feedback to the user if taks array is empty(Hint: evaluate arra length)
+                Example: if tasks array is empty, show a message "There are not task to show" */
+            }
+            {
+              tasks.map( ({ id, title }) => (
+                  <li key={id} 
+                      className="d-flex space-between">
+                    <div>
+                    <input type="checkbox" 
+                          style={{marginRight: '1rem'}} />
+                      {title}
+                    </div>
+                    <button>DELETE</button>
+                  </li>))
+            }
+          </ul>
+      </div>
     </>
   )
 }

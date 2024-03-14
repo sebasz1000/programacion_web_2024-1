@@ -32,6 +32,23 @@ button[type="submit"]{
   color: rgb(187, 245, 187);
 }
 
+ul{
+  padding: 0;
+}
+
+ul#tasks-list li{
+  margin: 0.8em 0;
+}
+
+.d-flex{
+  display: flex;
+}
+.space-between{
+  justify-content: space-between;
+}
+.gap-3{
+  gap: 2rem;
+}
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
