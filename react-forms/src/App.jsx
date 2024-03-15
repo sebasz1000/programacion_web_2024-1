@@ -32,6 +32,25 @@ function Form({ onSubmit }){
   )
 }
 
+function TasksList({tasks}){
+
+  return(
+  <ul id="tasks-list">
+    {
+      tasks.map( ({ id, title }) => (
+          <li key={id} 
+              className="d-flex space-between">
+            <div>
+            <input type="checkbox" 
+                  style={{marginRight: '1rem'}} />
+              {title}
+            </div>
+            <button>DELETE</button>
+          </li>))
+    }
+</ul>)
+}
+
 const initTasks = JSON.parse(window.localStorage.getItem("tasks")) ?? [] 
 
 function App() {
@@ -41,10 +60,6 @@ function App() {
   useEffect( () => {
     window.localStorage.setItem("tasks", JSON.stringify(tasks))
   } , [tasks])
-
-  useEffect(() => {
-    window.localStorage.setItem("tasks", JSON.stringify(tasks))
-  }, [tasks])
 
   // Create task
   const createTask = (taskTitle) => {
@@ -66,35 +81,30 @@ function App() {
   const completeTask = (/* id, completed(checkbox e.target.checked ) */) => {
     // map()
   }
-  
-  
+
+  const getGetTaskList = (hasTasks) =>  {
+    return hasTasks
+            ? <TasksList tasks={tasks}/>
+            : <NoTasksMsg />
+  }
+
+  const hasTasks = tasks.length > 0
+
   return (
     <>
       <p>Este es el valor del Input</p>
       <div className="container">
         <h1>React Forms</h1>
         <Form onSubmit={createTask} />
-          <ul id="tasks-list">
-            {
-              /* NOTE: We should give a feedback to the user if taks array is empty(Hint: evaluate arra length)
-                Example: if tasks array is empty, show a message "There are not task to show" */
-            }
-            {
-              tasks.map( ({ id, title }) => (
-                  <li key={id} 
-                      className="d-flex space-between">
-                    <div>
-                    <input type="checkbox" 
-                          style={{marginRight: '1rem'}} />
-                      {title}
-                    </div>
-                    <button>DELETE</button>
-                  </li>))
-            }
-          </ul>
+        { getGetTaskList(hasTasks) }
       </div>
     </>
   )
 }
+
+function NoTasksMsg(){
+  return <p>Sorry, there are not tasks over here :/</p>
+}
+
 
 export default App
