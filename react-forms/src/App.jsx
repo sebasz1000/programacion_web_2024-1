@@ -1,56 +1,7 @@
 import "./App.css";
 import { useState, useEffect } from 'react'
-
-
-function Form({ onSubmit }){
-  const [formState, setFormState] = useState("")
-  
-  const handleInput = ({target}) =>{
-    /*
-      Any required validation form
-      if(target.value === "x")
-        return
-    */
-    setFormState(target.value)
-  }
-  
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    onSubmit(formState)
-      setFormState("")
-  }
-  
-  return(
-    <form onSubmit={handleSubmit}>
-      <input type="text"
-              onChange={handleInput}
-              value={formState} />
-      <button type="submit"> 
-        Submit 
-      </button>
-    </form>
-  )
-}
-
-function TasksList({tasks}){
-
-  return(
-  <ul id="tasks-list">
-    {
-      tasks.map( ({ id, title }) => (
-          <li key={id} 
-              className="d-flex space-between">
-            <div>
-            <input type="checkbox" 
-                  style={{marginRight: '1rem'}} />
-              {title}
-            </div>
-            <button>DELETE</button>
-          </li>))
-    }
-</ul>)
-}
-
+import { Form, TasksList} from './components'
+ 
 const initTasks = JSON.parse(window.localStorage.getItem("tasks")) ?? [] 
 
 function App() {
@@ -74,17 +25,19 @@ function App() {
     
   }
   
-  const deleteTask = (TaskId) => {
-    // .filter()
+  const deleteTask = (/* TaskId */) => {
+    window.alert('Task DELETED')
   }
 
-  const completeTask = (/* id, completed(checkbox e.target.checked ) */) => {
-    // map()
+  const completeTask = (/* id, e.target.checked  */) => {
+    window.alert('Task COMPLETED')
   }
 
   const getGetTaskList = (hasTasks) =>  {
     return hasTasks
-            ? <TasksList tasks={tasks}/>
+            ? (<TasksList tasks={tasks} 
+                          onDelete={deleteTask}
+                          onToggle={completeTask}/>)
             : <NoTasksMsg />
   }
 
@@ -92,7 +45,6 @@ function App() {
 
   return (
     <>
-      <p>Este es el valor del Input</p>
       <div className="container">
         <h1>React Forms</h1>
         <Form onSubmit={createTask} />
