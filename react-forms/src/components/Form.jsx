@@ -1,7 +1,11 @@
 import { useState } from 'react'
+import { useTasks } from '../hooks/useTasks'
 
-export function Form({ onSubmit }){
+export function Form(){
   const [formState, setFormState] = useState("")
+  
+  const {createTask} = useTasks()
+
   
   const handleInput = ({target}) =>{
     /*
@@ -14,7 +18,7 @@ export function Form({ onSubmit }){
   
   const handleSubmit = (e) => {
     e.preventDefault()
-    onSubmit(formState)
+    createTask(formState)
       setFormState("")
   }
   

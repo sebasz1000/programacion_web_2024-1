@@ -1,18 +1,29 @@
-export function TasksList({tasks, onDelete, onToggle}){
+import { useTasks } from "../hooks/useTasks"
+
+export function TasksList(){
   
-  const handleDelete = () => onDelete()
-  const handleToggle = () => onToggle()
+  const {tasks, deleteTask, completeTask} = useTasks()
+  const handleDelete = () => deleteTask()
+  const handleToggle = () => completeTask()
   
-  return(
-    <ul id="tasks-list">
-      {
-        tasks.map( task => (
-          <Task task={task}
-                onDelete={handleDelete}  
-                onToggle={handleToggle} 
-                key={task.id}/> ))
-      }
-    </ul>)
+  const hasTasks = tasks.length > 0
+  
+  const getGetTaskList = (hasTasks) =>  {
+    return hasTasks
+            ? (<ul id="tasks-list">
+                  {
+                    tasks.map( task => (
+                      <Task task={task}
+                            onDelete={handleDelete}  
+                            onToggle={handleToggle} 
+                            key={task.id}/> ))
+                  }
+                </ul>)
+            : <NoTasksMsg />
+  }
+  
+  return getGetTaskList(hasTasks)
+    
 }
 
 
@@ -36,4 +47,8 @@ function Task({ task, onDelete, onToggle }){
             </button>
     </li>
   )
+}
+
+function NoTasksMsg(){
+  return <p>Sorry, there are not tasks over here :/</p>
 }
