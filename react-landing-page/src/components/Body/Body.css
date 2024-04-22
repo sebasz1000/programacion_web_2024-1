@@ -1,0 +1,12 @@
+.hero-img{
+  background-image: url('https://forms.soundestlink.com/image/form/popup/60672fa3bf911515b9b9415a');
+  background-size: cover;
+  background-position-y: center;
+  height: 40vh;
+}
+
+@media (min-width: 680px){
+  .hero-img{
+    height: 68vh;
+  }
+}

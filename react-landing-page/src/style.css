@@ -1,0 +1,59 @@
+/* Global styles */
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: black;
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+ /* brand colors */
+  --primary-color: #e3000a;
+  --secondary-color: yellow;
+  font-size: 14px;
+
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+
+}
+body{
+  background-color: white;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.text-big{
+  font-size: 2.6rem;
+}
+
+/* Global Media query for tablets */
+@media (min-width:680px){
+  :root {
+    font-size: 15px;
+  }
+}
+
+
+/* Global Media query for desktop */
+@media (min-width: 1024px){
+  :root {
+    font-size: 16px;
+  }
+}
