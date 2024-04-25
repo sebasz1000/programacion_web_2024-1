@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './Header.css'
 import { LINKS } from '../../const/links'
+import { Link, NavLink } from 'react-router-dom'
 
 export function Header () {
   const [showMenu, setShowMenu] = useState(false)
@@ -11,10 +12,12 @@ export function Header () {
 
   return (
     <header>
-      <img
-        src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/LEGO_logo.svg/2048px-LEGO_logo.svg.png'
-        width='80px'
-      />
+      <Link to='/'>
+        <img
+          src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/LEGO_logo.svg/2048px-LEGO_logo.svg.png'
+          width='80px'
+        />
+      </Link>
       <Menu
         items={LINKS}
         showMenu={showMenu}
@@ -50,10 +53,15 @@ function Menu ({ items, showMenu }) {
 }
 
 function MenuItem ({ item }) {
-  const { text } = item
+  const { text, url } = item
   return (
     <li>
-      <a href=''>{text}</a>
+      <NavLink
+        to={url}
+        className={({ isActive }) => isActive ? 'active' : ''}
+        state={{ estado: 'Hola' }}
+      >{text}
+      </NavLink>
     </li>
   )
 }

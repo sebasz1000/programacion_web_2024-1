@@ -1,5 +1,5 @@
-import './Body.css'
-export function Body () {
+import './Homepage.css'
+export function Homepage () {
   return (
     <main>
       <section>

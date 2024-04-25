@@ -36,6 +36,12 @@ header nav ul{
     font-weight: bold;
     text-align: center;
 }
+
+header nav ul li a.active{
+    color: blueviolet;
+    text-decoration: underline;
+}
+
 header nav ul li a{
     color: white;
     font-weight: bold;

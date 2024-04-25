@@ -1,10 +1,14 @@
 import React from 'react'
-import { Body, Header, Footer } from './components'
+import { Header, Footer } from './components'
+import { AppRouter } from './router/AppRouter'
+import { useLocation } from 'react-router-dom'
 export default function App () {
+  const location = useLocation()
+  console.log(location)
   return (
     <>
       <Header />
-      <Body />
+      <AppRouter />
       <Footer />
     </>
   )
