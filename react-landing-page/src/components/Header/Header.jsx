@@ -1,14 +1,18 @@
 import { useState } from 'react'
-import './Header.css'
 import { LINKS } from '../../const/links'
-import { Link, NavLink } from 'react-router-dom'
-
+import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { useAuth } from '../../hooks/useAuth'
+import './Header.css'
 export function Header () {
   const [showMenu, setShowMenu] = useState(false)
+  const { userIsLogged, logIn, logOut } = useAuth()
+  const navigate = useNavigate()
 
   const handleShowMenu = (e) => {
     setShowMenu(!showMenu)
   }
+
+  const goToLoginPage = () => navigate('/login')
 
   return (
     <header>
@@ -22,6 +26,17 @@ export function Header () {
         items={LINKS}
         showMenu={showMenu}
       />
+      {/*
+        userIsLogged
+          ? <button onClick={() => logOut()}>Logout</button>
+          : <button onClick={() => logIn()}>Login</button> */
+      }
+
+      <LogBtn
+        text={userIsLogged ? 'Logout' : 'Login'}
+        onClick={userIsLogged ? logOut : goToLoginPage}
+      />
+
       <button
         id='hamburguer-btn'
         onClick={handleShowMenu}
@@ -33,6 +48,12 @@ export function Header () {
         />
       </button>
     </header>
+  )
+}
+
+function LogBtn ({ text, onClick }) {
+  return (
+    <button onClick={() => onClick()}>{text}</button>
   )
 }
 
